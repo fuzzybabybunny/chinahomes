@@ -1,215 +1,36 @@
 <template name="header">
 
-	<div class="ui large vertical inverted labeled icon sidebar menu" id="menu">
-	    <a class="hide item">
-	      <i class="close icon"></i> Close Menu
-	    </a>
-	    <a class="item" href="/build/semantic.zip">
-	      <i class="inverted circular red awesome download cloud icon"></i> <b>Download</b>
-	    </a>
-	    <div class="item">
-	      <a href="/">
-	        <b>Introduction</b>
-	      </a>
-	      <div class="menu">
-	        
-	          <a class="item" href="/introduction/definitions.html">Definitions</a>
-	        
-	          <a class="item" href="/introduction/overview.html">Overview</a>
-	        
-	          <a class="item" href="/introduction/types.html">Types</a>
-	        
-	          <a class="item" href="/introduction/variations.html">Variations</a>
-	        
-	          <a class="item" href="/introduction.html">What's Different</a>
-	        
+<div class="ui fixed transparent inverted menu grid six column stackable">
+  <a class="active item brand">
+    <i class="white url icon"></i> Show me the Ropes
+  </a>
+	<div id="right_menu" class="right menu">
+	</div>
+	  <div class="ui compact inverted menu">
+	    <div class="ui simple dropdown item"> Options
+	      <i class="dropdown icon"></i>
+	      <div class="menu" id="dropdown_menu">
+	        <div class="item toggle button">Activities</div>
+	        <!-- <div class="item" id="addpin">Add pin</div> -->
 	      </div>
 	    </div>
-	    <div class="item">
-	      <b>Project</b>
-	      <div class="menu">
-	        
-	          <a class="item" href="/project/contributing.html">Contributing</a>
-	        
-	          <a class="item" href="/project/development.html">Local Docs</a>
-	        
-	      </div>
-	    </div>
-	    <div class="item">
-	      <a href="/element.html"><b>Elements</b></a>
-	      <div class="menu">
-	        
-	          <a class="item" href="/elements/button.html">Button</a>
-	        
-	          <a class="item" href="/elements/divider.html">Divider</a>
-	        
-	          <a class="item" href="/elements/header.html">Header</a>
-	        
-	          <a class="item" href="/elements/icon.html">Icon</a>
-	        
-	          <a class="item" href="/elements/image.html">Image</a>
-	        
-	          <a class="item" href="/elements/input.html">Input</a>
-	        
-	          <a class="item" href="/elements/label.html">Label</a>
-	        
-	          <a class="item" href="/elements/loader.html">Loader</a>
-	        
-	          <a class="item" href="/elements/progress.html">Progress</a>
-	        
-	          <a class="item" href="/modules/reveal.html">Reveal</a>
-	        
-	          <a class="item" href="/elements/segment.html">Segment</a>
-	        
-	          <a class="item" href="/elements/step.html">Step</a>
-	        
-	      </div>
-	    </div>
-	    <div class="item">
-	      <a href="/collection.html"><b>Collections</b></a>
-	      <div class="menu">
-	        
-	          <a class="item" href="/collections/breadcrumb.html">Breadcrumb</a>
-	        
-	          <a class="item" href="/collections/form.html">Form</a>
-	        
-	          <a class="item" href="/collections/grid.html">Grid</a>
-	        
-	          <a class="item" href="/collections/menu.html">Menu</a>
-	        
-	          <a class="item" href="/collections/message.html">Message</a>
-	        
-	          <a class="item" href="/collections/table.html">Table</a>
-	        
-	      </div>
-	    </div>
-	    <div class="item">
-	      <b>Views</b>
-	      <div class="menu">
-	        
-	          <a class="item" href="/views/comment.html">Comment</a>
-	        
-	          <a class="item" href="/views/feed.html">Feed</a>
-	        
-	          <a class="item" href="/views/item.html">Item</a>
-	        
-	          <a class="item" href="/views/list.html">List</a>
-	        
-	      </div>
-	    </div>
-	    <div class="item">
-	      <a href="/module.html"><b>Modules</b></a>
-	      <div class="menu">
-	        
-	          <a class="item" href="/modules/accordion.html">Accordion</a>
-	        
-	          <a class="item" href="/modules/checkbox.html">Checkbox</a>
-	        
-	          <a class="item" href="/modules/dimmer.html">Dimmer</a>
-	        
-	          <a class="item" href="/modules/dropdown.html">Dropdown</a>
-	        
-	          <a class="item" href="/modules/modal.html">Modal</a>
-	        
-	          <a class="item" href="/modules/popup.html">Popup</a>
-	        
-	          <a class="item" href="/modules/rating.html">Rating</a>
-	        
-	          <a class="item" href="/modules/shape.html">Shape</a>
-	        
-	          <a class="item" href="/modules/sidebar.html">Sidebar</a>
-	        
-	          <a class="item" href="/modules/transition.html">Transition</a>
-	        
-	      </div>
-	    </div>
-	    <div class="item">
-	      <b>Behavior</b>
-	      <div class="menu">
-	        
-	          <a class="item" href="/modules/form.html">Form Validation</a>
-	        
-	      </div>
-	    </div>
-	    <div class="item">
-	      <b>Style Guide</b>
-	      <div class="menu">
-	        
-	          <a class="item" href="/guide/cssguide.html">CSS</a>
-	        
-	          <a class="item" href="/guide/javascriptguide.html">Javascript</a>
-	        
-	          <a class="item" href="/guide/styleguide.html">Language</a>
-	        
-	      </div>
-	    </div>
-	<!--     <div class="item">
-	      <b>Specification</b>
-	      <div class="menu">
-	        
-	      </div>
-	    </div> -->
 	  </div>
+</div>
 
-	<div class="ui fixed transparent inverted main menu">
-	    <div class="container">
-	      <a class="launch item"><i class="icon list layout"></i> Content</a>
-	      <div class="title item">
-	        <b>Semantic:</b> Introduction
-	      </div>
-	      
-	      <div class="disabled icon item"><i class="left arrow icon"></i></div>
-	      
-	      <div class="section ui dropdown link item">
-	        <span class="count">1 of 4</span>
-	        <div class="menu">
-	          
-	            <div class="active item">
-	              <a href="/index.html">1. Introduction</a>
-	            </div>
-	          
-	            <div class="item">
-	              <a href="/collection.html">2. UI Collections</a>
-	            </div>
-	          
-	            <div class="item">
-	              <a href="/element.html">3. UI Elements</a>
-	            </div>
-	          
-	            <div class="item">
-	              <a href="/module.html">4. UI Modules</a>
-	            </div>
-	          
-	        </div>
-	      </div>
-	      
-	      <a class="icon item" href="/collection.html"><i class="right arrow icon"></i></a>
-	      
-	      <div class="right menu">
-	        <div class="vertically fitted borderless item">
-	          <iframe src="http://ghbtns.com/github-btn.html?user=semantic-org&amp;repo=semantic-ui&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe>
-	        </div>
-	        
-	        <a class="popup icon github item" data-content="View project on Github" href="https://github.com/quirkyinc/semantic">
-	          <i class="icon github"></i>
-	        </a>
-	        <!--
-	        <div class="ui simple dropdown item">
-	          <i class="icon tint"></i> Theme
-	          <div class="theme menu">
-	            <div class="active item" data-theme="flat">Flat</div>
-	            <div class="item" data-theme="shaded">Shaded</div>
-	            <div class="item" data-theme="classic">Classic</div>
-	          </div>
-	        </div>
-	        !-->
-	      </div>
-	    </div>
-	</div>
+<div class="ui styled sidebar">
+  <h4 class="ui header">What activities do you like?</h4>
 
-	<div class="ui black huge launch right attached button" style="width: 70px;">
-	  <i class="icon list layout"></i>
-	  <span class="text" style="display: none;">Menu</span>
-	</div>
+  <div class="ui icon input">
+    <input type="text" ng-model="searchText" placeholder="Search...">
+    <i class="circular search icon"></i>
+  </div>
+
+  <div id="searchTextResults" ng-controller="sportController">
+    <div ng-repeat="activity in activities | filter:searchText">
+      <p class="sidebar_list">{{activity.sport}}</p>
+    </div>
+  </div>
+
+</div>
 
 </template>
