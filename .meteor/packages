@@ -10,4 +10,5 @@ accounts-base
 accounts-password
 accounts-ui
 iron:router
+nooitaf:semantic-ui
 
