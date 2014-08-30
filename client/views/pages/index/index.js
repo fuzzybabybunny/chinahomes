@@ -28,33 +28,52 @@ Template.Index.created = function () {
 
 Template.Index.rendered = function () {
 
-    var listings = Listings.find().fetch();
-    for (var i = 0; i < listings.length; i++){
-      console.log(listings[i].address1);
-      // console.log(listing.address1);
-    }
+  listings = Listings.find().fetch();
+  console.log(listings);
 
-    // Declaring a new function called 'initialize'
-    function initialize() {
-      var mapOptions = {
-        zoom: 12,
-        center: new google.maps.LatLng(34.2593804, 108.9672088)
+  var initialize = function() {
+    geocoder = new google.maps.Geocoder();
+    var mapOptions = {
+      zoom: 12,
+      center: new google.maps.LatLng(34.2593804, 108.9672088)
+    };
+    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  };
+
+  initialize();
+
+  Deps.autorun(function() {
+    listings = Listings.find().fetch();
+    console.log(listings);
+
+    for (var i = 0; i < listings.length; i++){
+
+      console.log("In the loop");
+
+      console.log(listings[i].fullAddress);
+
+      function codeAddress() {
+        var address = listings[i].fullAddress;
+        geocoder.geocode( { 'address': address}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
       };
 
-      var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+      codeAddress();
 
-      new google.maps.Marker({
-        position: new google.maps.LatLng(22.400053, 114.192587),
-        map: map,
-        title: 'Insight Robotics'
-      });
+      console.log(listings[i].fullAddress);
+      // console.log(listing.address1);
+    };
 
-    }
-
-    // Got rid of Gmap's Window Load event listener - not needed with Meteor's
-    // Template.footprint.rendered since this code will only run when the 
-    // template is rendered (and by extension, the window is loaded).
-    initialize();
+  });
 
 };
 
