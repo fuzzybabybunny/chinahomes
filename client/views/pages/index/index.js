@@ -68,7 +68,8 @@ var geocoder;
             console.log("got results!");
             var lat = results[0].geometry.location['B'];
             var lng = results[0].geometry.location['k'];
-            callback(lat, lng);
+            var position = callback(lat, lng);
+            return position;
           } else {
             alert("No results found");
           }
@@ -90,6 +91,11 @@ var geocoder;
     // console.log(gpsPosition);
     return gpsPosition;
   };
+
+//   codeAddress("1600 Amphitheatre Pkwy, Mountain View, CA 94043", function(lat, lng){
+//    var stuff = createGPSPosition(lat, lng);
+//    console.log(stuff); // => your gpsPosition object
+// });
 
   // codeAddress = function(address, ) {
   //   var gpsPosition = {};
