@@ -12,6 +12,12 @@ Template.header.events({
     	overlay: false
   	})
   	.sidebar('toggle');
+	},
+
+	'click #add-listing': function(){
+		console.log("clicked");
+		$('.test.modal').modal('show');
+		UI.render(Template.AddListing); 
 	}
 
 
