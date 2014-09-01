@@ -1,36 +1,42 @@
 <template name="header">
 
 <div class="ui fixed transparent inverted menu grid six column stackable">
+
   <a class="active item brand">
     <i class="white url icon"></i> China Zillow
   </a>
-	<div id="right_menu" class="right menu">
-	</div>
-	  <div class="ui compact inverted menu">
-	    <div class="ui simple dropdown item"> Options
-	      <i class="dropdown icon"></i>
-	      <div class="menu" id="dropdown_menu">
-	        <div class="item toggle button">Activities</div>
-	        <!-- <div class="item" id="addpin">Add pin</div> -->
-	      </div>
-	    </div>
-	  </div>
-</div>
 
-<div class="ui styled sidebar">
-  <h4 class="ui header">What activities do you like?</h4>
-
-  <div class="ui icon input">
-    <input type="text" ng-model="searchText" placeholder="Search...">
-    <i class="circular search icon"></i>
-  </div>
-
-  <div id="searchTextResults" ng-controller="sportController">
-    <div ng-repeat="activity in activities | filter:searchText">
-      <p class="sidebar_list">{{activity.sport}}</p>
+  <div class="right menu">
+    <div class="right ui icon buttons">
+      <div class="ui top left pointing dropdown button">
+        <i class="user icon"></i>
+        <div class="menu ui transition hidden">
+          <div class="item"><i class="edit icon"></i>Edit User</div>
+          <div class="item"><i class="delete icon"></i>Remove User</div>
+          <div class="item"><i class="hide icon"></i>Make Invisible</div>
+        </div>
+      </div>
+      <div class="ui top left pointing dropdown button">
+        <i class="users icon"></i>
+        <div class="menu ui transition hidden">
+          <div class="item"><i class="edit icon"></i>Edit Group</div>
+          <div class="item"><i class="delete icon"></i>Remove Group</div>
+          <div class="item"><i class="hide icon"></i>Hide from Group</div>
+        </div>
+      </div>
+      <div class="ui top right pointing dropdown button">
+        <i class="settings icon"></i>
+        <div class="menu ui transition hidden">
+          <div class="item"><i class="edit icon"></i>Edit</div>
+          <div class="item"><i class="delete icon"></i>Remove</div>
+          <div class="item"><i class="hide icon"></i>Hide</div>
+        </div>
+      </div>
     </div>
   </div>
 
 </div>
+
+
 
 </template>

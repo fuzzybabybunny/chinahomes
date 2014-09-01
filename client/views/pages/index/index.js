@@ -118,7 +118,7 @@ Template.Index.rendered = function () {
   //   // console.log(marker);
   //   createInfoWindow(marker, i);
 
-  };
+  // };
 
 };
 
