@@ -28,100 +28,53 @@ Template.Index.created = function () {
 
 Template.Index.rendered = function () {
 
+  var handleGeocodeResult;
+
   listings = Listings.find().fetch();
   // console.log("listings:");
   // console.log(listings);
 
-var geocoder;
-// function initialize() {
-//   geocoder = new google.maps.Geocoder();
-//   var latlng = new google.maps.LatLng(40.730885,-73.997383);
-//   codeLatLng(function(addr){
-//     alert(addr);
-//   });
-// }
+  geocodeAddress = function(streetAddress) {
 
-// function codeLatLng(callback) {
-//   var latlng = new google.maps.LatLng(40.730885,-73.997383);
-//   if (geocoder) {
-//     geocoder.geocode({'latLng': latlng}, function(results, status) {
-//       if (status == google.maps.GeocoderStatus.OK) {
-//         if (results[1]) {
-//           callback(results[1].formatted_address);
-//         } else {
-//           alert("No results found");
-//         }
-//       } else {
-//         alert("Geocoder failed due to: " + status);
-//       }
-//     });
-//   }
-// }
+    new Promise(function(resolve, reject) {
 
+      // async call to Google's Geocoder - takes street address
+      // and returns GPS coordinates
 
-  codeAddress = function(address, callback) {
-    var gpsPosition = {};
-    if (geocoder) {
-      geocoder.geocode({'address': address}, function(results, status) {
+      handleGeocodeResult = function(result) {
+        // for illustration only... this function should actually
+        // *BE* the Promise resolve handler.
+        console.log("This is the gpsPosition");
+        console.log(result); // this console logs the result just fine
+        myResult = result;
+      };
+
+      var geocoder = new google.maps.Geocoder();
+      geocoder.geocode({'address': streetAddress}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
           if (results[0]) {
-            console.log("got results!");
-            var lat = results[0].geometry.location['B'];
-            var lng = results[0].geometry.location['k'];
-            var position = callback(lat, lng);
-            return position;
+            resolve({B: results[0].geometry.location['B'],
+                     k: results[0].geometry.location['k']});
           } else {
-            alert("No results found");
+            reject(Error("It broke"));
           }
         } else {
-          alert("Geocoder failed due to: " + status);
+          reject(Error("It broke"));
         }
       });
-    }
+    })
+    .then(
+      // this is the Promise resolve handler
+      function(result) {
+        handleGeocodeResult(result);
+      },
+      // this is the Promise reject handler
+      function(err) {
+        console.log(err); // Error: "It broke"
+      });
   };
-
-  createGPSPosition = function(lat, lng){
-    console.log("createGPSPosition called with lat and lng:");
-    console.log(lat);
-    console.log(lng);
-    var gpsPosition = {};
-    gpsPosition.B = lat;
-    gpsPosition.k = lng;
-    // console.log("gpsPosition:");
-    // console.log(gpsPosition);
-    return gpsPosition;
-  };
-
-//   codeAddress("1600 Amphitheatre Pkwy, Mountain View, CA 94043", function(lat, lng){
-//    var stuff = createGPSPosition(lat, lng);
-//    console.log(stuff); // => your gpsPosition object
-// });
-
-  // codeAddress = function(address, ) {
-  //   var gpsPosition = {};
-  //   geocoder.geocode( { 'address': address}, function(results, status) {
-  //     if (status == google.maps.GeocoderStatus.OK) {
-  //       if (results[0]) {
-  //         gpsPosition.B = results[0].geometry.location['B'];
-  //         gpsPosition.k = results[0].geometry.location['k'];
-  //         return gpsPosition;
-  //       } else {
-  //         alert("No results found");
-  //       }
-  //       // gpsPosition.B = results[0].geometry.location['B'];
-  //       // gpsPosition.k = results[0].geometry.location['k'];
-  //       // console.log(gpsPosition.B);
-  //       // console.log(gpsPosition.k);
-  //       // console.log(gpsPosition);
-  //       // return gpsPosition;
-  //     } else {
-  //       alert('Geocode was not successful for the following reason: ' + status);
-  //     }
-  //   });
-  // };
 
   var initialize = function() {
-    geocoder = new google.maps.Geocoder();
     var mapOptions = {
       zoom: 12,
       center: new google.maps.LatLng(34.2593804, 108.9672088)
@@ -147,23 +100,23 @@ var geocoder;
     });
   };
 
-  for (var i = 0; i < listings.length; i++){
-    var address;
-    var fullAddress = listings[i].fullAddress;
-    console.log("fullAddress:");
-    console.log(fullAddress);
-    var location = codeAddress( fullAddress, createGPSPosition );
-    console.log("location right before marker:");
-    console.log(location);
-    var marker = new google.maps.Marker({
-        map: map,
-        title: address,
-        position: location
-    });
+  // for (var i = 0; i < listings.length; i++){
+  //   var address;
+  //   var fullAddress = listings[i].fullAddress;
+  //   console.log("fullAddress:");
+  //   console.log(fullAddress);
+  //   var location = geocodeAddress(fullAddress);
+  //   console.log("location right before marker:");
+  //   console.log(location);
+  //   var marker = new google.maps.Marker({
+  //       map: map,
+  //       title: address,
+  //       position: location
+  //   });
 
-    // console.log("marker");
-    // console.log(marker);
-    createInfoWindow(marker, i);
+  //   // console.log("marker");
+  //   // console.log(marker);
+  //   createInfoWindow(marker, i);
 
   };
 
