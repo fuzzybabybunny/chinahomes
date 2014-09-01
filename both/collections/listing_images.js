@@ -1,0 +1,1 @@
+ListingImages = new Meteor.Collection('listingImages');
