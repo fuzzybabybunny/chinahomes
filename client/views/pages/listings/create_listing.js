@@ -36,10 +36,10 @@ Template.CreateListing.rendered = function(){
 			address2: $(e.target).find('[name=address2]').val(),
 			city: $(e.target).find('[name=city]').val(),
 			province: $(e.target).find('[name=province]').val(),
-			bedrooms: $(e.target).find('[name=bedrooms]').val(),
-			bathrooms: $(e.target).find('[name=city]').val(),
-			interiorSize: $(e.target).find('[name=interiorSize]').val(),
-			exteriorSize: $(e.target).find('[name=exteriorSize]').val(),
+			bedrooms: parseInt( $(e.target).find('[name=bedrooms]').val() ),
+			bathrooms: parseInt( $(e.target).find('[name=bathrooms]').val() ),
+			interiorSize: parseInt( $(e.target).find('[name=interiorSize]').val() ),
+			exteriorSize: parseInt( $(e.target).find('[name=exteriorSize]').val() ),
 			title: $(e.target).find('[name=title]').val(),
 			description: $(e.target).find('[name=description]').val()
 		};
