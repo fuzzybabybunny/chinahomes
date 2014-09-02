@@ -81,8 +81,8 @@ Template.CreateListing.rendered = function(){
 		      geocoder.geocode({'address': streetAddress}, function(results, status) {
 		        if (status == google.maps.GeocoderStatus.OK) {
 		          if (results[0]) {
-		            resolve({B: results[0].geometry.location['B'],
-		                     k: results[0].geometry.location['k']});
+		            resolve({lng: results[0].geometry.location['B'],
+		                     lat: results[0].geometry.location['k']});
 		          } else {
 		            reject(Error("It broke"));
 		          }
