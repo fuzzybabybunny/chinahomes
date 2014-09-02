@@ -14,10 +14,10 @@ Template.header.events({
   	.sidebar('toggle');
 	},
 
-	'click #add-listing': function(){
+	'click #create-listing': function(){
 		console.log("clicked");
 		$('.test.modal').modal('show');
-		UI.render(Template.AddListing); 
+		// UI.render(Template.CreateListing); 
 	}
 
 

@@ -1,4 +1,4 @@
-Template.AddListing.rendered = function(){
+Template.CreateListing.rendered = function(){
 
 	// if (Meteor.isClient){
 
@@ -30,7 +30,7 @@ Template.AddListing.rendered = function(){
 };
 
 
-Template.AddListing.events({
+Template.CreateListing.events({
 
   'click #add-listing-button': function(){
     console.log("submitted!");
