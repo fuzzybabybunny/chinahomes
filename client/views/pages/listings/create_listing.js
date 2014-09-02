@@ -40,6 +40,7 @@ Template.CreateListing.rendered = function(){
 			bathrooms: parseInt( $(e.target).find('[name=bathrooms]').val() ),
 			interiorSize: parseInt( $(e.target).find('[name=interiorSize]').val() ),
 			exteriorSize: parseInt( $(e.target).find('[name=exteriorSize]').val() ),
+			price: parseInt( $(e.target).find('[name=price]').val() * 100 ),
 			title: $(e.target).find('[name=title]').val(),
 			description: $(e.target).find('[name=description]').val()
 		};
