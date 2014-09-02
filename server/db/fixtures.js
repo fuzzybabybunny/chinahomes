@@ -58,3 +58,17 @@ if (Listings.find().count() === 0) {
   });
 
 };
+
+if ( Meteor.users.find().count() === 0 ) {
+    Accounts.createUser({
+        username: 'admin',
+        email: 'victor@victorlinphoto.com',
+        password: '123456',
+        profile: {
+            first_name: 'Victor',
+            last_name: 'Lin',
+            company: 'VLP',
+        }
+    });
+};
+

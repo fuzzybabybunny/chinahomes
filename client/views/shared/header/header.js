@@ -16,7 +16,7 @@ Template.header.events({
 
 	'click #create-listing': function(){
 		console.log("clicked");
-		$('.test.modal').modal('show');
+		$('#create-listing-modal').modal('show');
 		// UI.render(Template.CreateListing); 
 	}
 

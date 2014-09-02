@@ -1,71 +1,70 @@
 <template name="CreateListing">
 
-	<div class="test ui modal">
+	<div class="ui modal" id="create-listing-modal">
 	  <i class="close icon"></i>
 	  <div class="header">
 	    Create a New Listing
 	  </div>
 	  <div class="content">
-	    <div class="left">
-	      <div class="dropzone" id="dropzone"></div>
-	    </div>
-	    <div class="right">
-	    	<form action="#">
+      <div class="dropzone" id="dropzone"></div>
+    	<form action="#">
 	    	<div class="ui form segment">
 				  <div class="two fields">
 				    <div class="field">
 				      <label>Address 1</label>
-				      <input placeholder="Address 1" type="text">
+				      <input placeholder="Address 1" name="address1" type="text">
 				    </div>
 				    <div class="field">
 				      <label>Address 2</label>
-				      <input placeholder="Address 2" type="text">
+				      <input placeholder="Address 2" name="address2" type="text">
 				    </div>
 				  </div>
 			    <div class="field">
 			      <label>City</label>
-			      <input placeholder="City" type="text">
+			      <input placeholder="City" name="city" type="text">
 			    </div>
 			    <div class="field">
 			      <label>Province</label>
-			      <input placeholder="Province" type="text">
+			      <input placeholder="Province" name="province" type="text">
 			    </div>
 			    <div class="two fields">
 			    	<div class="field">
 							<label>Number of Bedrooms</label>
-							<input type="number">
+							<input type="number" name="bedrooms">
 			    	</div>
 			    	<div class="field">
 							<label>Number of Bathrooms</label>
-							<input type="number">
+							<input type="number" name="bathrooms">
 			    	</div>
 			    </div>
 			    <div class="two fields">
 			    	<div class="field">
 							<label>Interior Size</label>
-							<input type="number">
+							<input type="number" name="interiorSize">
 			    	</div>
 			    	<div class="field">
 							<label>Exterior Size</label>
-							<input type="number">
+							<input type="number" name="exteriorSize">
 			    	</div>
 			    </div>
 				  <div class="field">
+				    <label>Title</label>
+				    <input type="text" name="title">
+				  </div>
+				  <div class="field">
 				    <label>Description</label>
-				    <textarea></textarea>
+				    <textarea name="description"></textarea>
 				  </div>
 				</div>
-	    	</form>
-	    </div>
+			  <div class="actions">
+			    <div class="ui button">
+			      Cancel
+			    </div>
+			    <input class="ui button" type="submit" value="Submit">
+			  </div>
+    	</form>
 	  </div>
-	  <div class="actions">
-	    <div class="ui button">
-	      Cancel
-	    </div>
-	    <div class="ui button">
-	      Okay
-	    </div>
-	  </div>
+
 	</div>
 
 </template>
