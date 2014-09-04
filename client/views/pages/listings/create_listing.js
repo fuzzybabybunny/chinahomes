@@ -1,3 +1,20 @@
+var createFullAddress = function(addressHash){
+
+	if (!!addressHash.address2){
+		var fullAddress = addressHash.address1 + ", "
+											+ addressHash.address2 + ", "
+											+ addressHash.city + ", "
+											+ addressHash.province + ", China";
+	} else {
+		var fullAddress = addressHash.address1 + ", "
+											+ addressHash.city + ", "
+											+ addressHash.province + ", China";
+	}
+
+	return fullAddress;
+
+};
+
 Template.CreateListing.rendered = function(){
 
 	// if (Meteor.isClient){
@@ -29,8 +46,6 @@ Template.CreateListing.rendered = function(){
 
 	$('form').submit(function(e, t){
 		e.preventDefault();
-		console.log("submitted on rendered callback!");
-
 		var listingSubmission = {
 			address1: $(e.target).find('[name=address1]').val(),
 			address2: $(e.target).find('[name=address2]').val(),
@@ -44,24 +59,8 @@ Template.CreateListing.rendered = function(){
 			title: $(e.target).find('[name=title]').val(),
 			description: $(e.target).find('[name=description]').val()
 		};
-		console.log(listingSubmission);
 
-		var createFullAddress = function(addressHash){
-
-			if (!!addressHash.address2){
-				var fullAddress = addressHash.address1 + ", "
-													+ addressHash.address2 + ", "
-													+ addressHash.city + ", "
-													+ addressHash.province + ", China";
-			} else {
-				var fullAddress = addressHash.address1 + ", "
-													+ addressHash.city + ", "
-													+ addressHash.province + ", China";
-			}
-
-			return fullAddress;
-
-		};
+		// console.log(listingSubmission);
 
 		listingSubmission.fullAddress = createFullAddress(listingSubmission);
 
