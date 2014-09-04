@@ -1,7 +1,9 @@
 Template.ShowListings.helpers({
 
 	'ListingItem': function(){
-		return Listings.find();
+		if (!!Meteor.user()) {
+			return Listings.find({agentId: Meteor.user()._id});
+		};
 	}
 
 })
