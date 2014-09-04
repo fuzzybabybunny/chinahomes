@@ -54,3 +54,6 @@ Template.test.rendered = function(){
 
 };
 
+Template.test.helpers({
+
+});

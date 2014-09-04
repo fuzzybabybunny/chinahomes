@@ -18,7 +18,14 @@ Template.header.events({
 		console.log("clicked");
 		$('#create-listing-modal').modal('show');
 		// UI.render(Template.CreateListing); 
+	},
+
+	'click #my-listings': function(){
+		console.log("clicked");
+		$('#show-listings-modal').modal('show');
+		// UI.render(Template.CreateListing); 
 	}
+
 
 
 })

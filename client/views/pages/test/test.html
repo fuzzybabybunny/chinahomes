@@ -1,5 +1,18 @@
 <template name="test">
+<!-- 
+	{{> reactiveTable collection=Listings}} -->
 
-Things.
+	<div class="ui modal" id="show-listings-modal">
+	  <i class="close icon"></i>
+	  <div class="header">
+	    My Listings
+	  </div>
+	  <div class="content">
+			{{#each ListingItem}}
+				{{fullAddress}}
+			{{/each}}
+	  </div>
+
+	</div>
 
 </template>
