@@ -66,11 +66,9 @@ Template.CreateListing.rendered = function(){
 
 		console.log(listingSubmission);
 
-		var listingID = Listings.insert(listingSubmission);
-
 		// GEOCODE SECTION
 
-		geocodeAddress = function(streetAddress) {
+		geocodeListing = function(listingSubmission) {
 
 		    new Promise(function(resolve, reject) {
 
@@ -78,7 +76,7 @@ Template.CreateListing.rendered = function(){
 		      // and returns GPS coordinates
 
 		      var geocoder = new google.maps.Geocoder();
-		      geocoder.geocode({'address': streetAddress}, function(results, status) {
+		      geocoder.geocode({'address': listingSubmission.fullAddress}, function(results, status) {
 		        if (status == google.maps.GeocoderStatus.OK) {
 		          if (results[0]) {
 		            resolve({lng: results[0].geometry.location['B'],
@@ -94,7 +92,7 @@ Template.CreateListing.rendered = function(){
 		    .then(
 		      // this is the Promise resolve handler
 		      function(result) {
-		        handleGeocodeResult(result);
+		        insertResult(result, listingSubmission);
 		      },
 		      // this is the Promise reject handler
 		      function(err) {
@@ -102,15 +100,27 @@ Template.CreateListing.rendered = function(){
 		      });
 		};
 
-		function handleGeocodeResult(result) {
+		function insertResult(result, listingSubmission) {
 		  // for illustration only... this function should actually
 		  // *BE* the Promise resolve handler.
 		  console.log("This is the gpsPosition");
-		  console.log(result); // this console logs the result just fine
-		  Listings.update({_id: listingID}, {$set: {geocode: result}});
+		  console.log(result);
+		  console.log("This is the listingSubmission");
+		  console.log(listingSubmission); // this console logs the result just fine
+			listingSubmission.geocode = result;
+			Meteor.call('list', listingSubmission, function(error, id){
+				if (error){
+					throwError(error.reason);
+					if(error.error === 302){
+						Router.go('index', {_id: error.details});
+					} else {
+						Router.go('index', {_id: id});
+					}
+				}
+			});
 		};
 
-		geocodeAddress(listingSubmission.fullAddress);
+		geocodeListing(listingSubmission);
 
 	});
 

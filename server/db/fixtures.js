@@ -14,7 +14,7 @@ if (Listings.find().count() === 0) {
     price: 50000,
     title: "Amazing House",
     desc: "Nice and bright!",
-    agentId: "f454wfe45y65y4",
+    agentId: "LHrhapueRmyJkajZ2",
     lat: "",
     lng: ""
   });
@@ -33,7 +33,7 @@ if (Listings.find().count() === 0) {
     price: 75000,
     title: "Amazing House",
     desc: "Nice and bright!",
-    agentId: "f454wfe45y65y4",
+    agentId: "LHrhapueRmyJkajZ2",
     lat: "",
     lng: ""
   });
@@ -52,7 +52,7 @@ if (Listings.find().count() === 0) {
     price: 20000000,
     title: "Zhonglou Hotel",
     desc: "Lorem ipsum",
-    agentId: "f454wfe45y65y4",
+    agentId: "LHrhapueRmyJkajZ2",
     lat: "",
     lng: ""
   });
@@ -61,6 +61,7 @@ if (Listings.find().count() === 0) {
 
 if ( Meteor.users.find().count() === 0 ) {
     Accounts.createUser({
+        _id: "LHrhapueRmyJkajZ2",
         username: 'admin',
         email: 'victor@victorlinphoto.com',
         password: '123456',
