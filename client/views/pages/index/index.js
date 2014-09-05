@@ -37,15 +37,58 @@ Template.Index.rendered = function () {
     };
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
   
+//
+    // stuffs = Stuffs.find().fetch();
+
+    // for (var i = 0; i < stuffs.length; i++){
+
+    //   var position = new google.maps.LatLng(stuffs[i]['latitude'], stuffs[i]['longitude']);
+    //   var marker = new google.maps.Marker({
+    //     position: position,
+    //     map: map,
+    //     icon: "/img/map_stuff.png"
+    //   });
+    //   attachStuffName(marker, i);
+    // }
+
+    // function attachStuffName(marker, num) {
+
+    //   var contentString = '<a href=/stuffs/' + stuffs[num]["_id"] + '>' + stuffs[num]["stuffName"] + '</a>' ;
+
+    //   var infowindow = new google.maps.InfoWindow({
+    //     content: contentString
+    //   });
+
+    //   google.maps.event.addListener(marker, 'mouseover', function() {
+    //     infowindow.open(marker.get('map'), marker);
+    //     console.log(marker);
+    //     console.log(infowindow);
+    //   });
+    // }
+//
+    var attachWindow = function(marker, num){
+      var contentString = listings[num].title;
+      var infoWindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+      google.maps.event.addListener(marker, 'click', function(){
+        infoWindow.open(marker.get('map'), marker);
+        console.log(marker);
+        console.log(infoWindow);
+      });
+    };
+
     for(var i = 0; i < listings.length; i++){
       var lat = listings[i].geocode.lat;
       var lng = listings[i].geocode.lng;
       var listingLatlng = new google.maps.LatLng(lat, lng);
       var marker = new google.maps.Marker({
           position: listingLatlng,
+          animation: google.maps.Animation.DROP,
           map: map,
           title: listings[i].title
       });
+      attachWindow(marker, i);
     };
 
   };
@@ -67,6 +110,9 @@ Template.Index.rendered = function () {
       // console.log(infowindow);
     });
   };
+
+
+
 
   // for (var i = 0; i < listings.length; i++){
   //   var address;
