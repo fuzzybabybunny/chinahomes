@@ -18,9 +18,6 @@ Template.Index.helpers({
    *    return Items.find();
    *  }
    */
-  // 'Listings': function(){
-  //   return Listings;
-  // },
 });
 
 /*****************************************************************************/
@@ -30,7 +27,7 @@ Template.Index.created = function () {
 };
 
 Template.Index.rendered = function () {
-  // listings = Listings.find().fetch();
+  var listings = Listings.find().fetch();
   // console.log("listings:");
   // console.log(listings);
   var initialize = function() {
@@ -39,6 +36,18 @@ Template.Index.rendered = function () {
       center: new google.maps.LatLng(34.2593804, 108.9672088)
     };
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  
+    for(var i = 0; i < listings.length; i++){
+      var lat = listings[i].geocode.lat;
+      var lng = listings[i].geocode.lng;
+      var listingLatlng = new google.maps.LatLng(lat, lng);
+      var marker = new google.maps.Marker({
+          position: listingLatlng,
+          map: map,
+          title: listings[i].title
+      });
+    };
+
   };
 
   initialize();
@@ -83,3 +92,21 @@ Template.Index.rendered = function () {
 
 Template.Index.destroyed = function () {
 };
+
+// function initialize() {
+//   var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+//   var mapOptions = {
+//     zoom: 4,
+//     center: myLatlng
+//   }
+//   var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+//   var lat = listings[i].geocode.lat;
+//   var lng = listings[i].geocode.lng;
+//   var listingLatlng = new google.maps.LatLng(lat, lng);
+//   var marker = new google.maps.Marker({
+//       position: listingLatlng,
+//       map: map,
+//       title: listings[i].title
+//   });
+// }

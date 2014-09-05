@@ -11,7 +11,6 @@ if ( Meteor.users.find().count() === 0 ) {
     });
 };
 
-
 if (Listings.find().count() === 0) {
 
   Listings.insert({
@@ -103,6 +102,4 @@ if (Listings.find().count() === 0) {
   });
 
 };
-
-
 
