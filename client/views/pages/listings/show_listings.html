@@ -6,9 +6,7 @@
 	    My Listings
 	  </div>
 	  <div class="content">
-			{{#each ListingItem}}
-				<p>{{price}} - {{address1}}</p>
-			{{/each}}
+			{{> reactiveTable collection=Listings}}
 	  </div>
 
 	</div>

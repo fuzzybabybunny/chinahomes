@@ -56,4 +56,10 @@ Template.test.rendered = function(){
 
 Template.test.helpers({
 
+	'Listings': function(){
+		return Listings;
+	},
+
 });
+
+// Template.test.Listings = function () { return Listings; };

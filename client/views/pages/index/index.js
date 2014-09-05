@@ -18,6 +18,9 @@ Template.Index.helpers({
    *    return Items.find();
    *  }
    */
+  // 'Listings': function(){
+  //   return Listings;
+  // },
 });
 
 /*****************************************************************************/

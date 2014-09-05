@@ -2,7 +2,7 @@ Template.header.rendered = function(){
 
 	$('.ui.dropdown').dropdown();
 
-}
+};
 
 Template.header.events({
 
@@ -28,4 +28,12 @@ Template.header.events({
 
 
 
+});
+
+Template.header.helpers({
+
+	// 'Listings': function(){
+	// 	return Listings;
+	// },
+	
 })
