@@ -11,10 +11,13 @@ Template.Index.events({
    */
   'click .reactive-table tr': function (event) {
     // set the blog post we'll display details and news for
-    var post = this;
+    var listingId = this._id;
     console.log("clicked!");
-    console.log(post);
-    Session.set('post', post);
+    console.log(listingId);
+    var myListing = Listings.findOne(listingId);
+    console.log(myListing);
+    Session.set('myListing', myListing);
+    $('#show-listing-modal').modal('show');
   },
 
 });

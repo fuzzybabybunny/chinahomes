@@ -2,6 +2,14 @@ Template.header.rendered = function(){
 
 	$('.ui.dropdown').dropdown();
 
+	Deps.autorun(function(c) {
+    if (Session.get('modalVisible')) {
+        $('#myModal').modal('show'); 
+    } else {
+        $('#myModal').modal('hide');
+    }
+	});
+
 };
 
 Template.header.events({
