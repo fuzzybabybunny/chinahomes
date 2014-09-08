@@ -1,5 +1,26 @@
 <template name="Index">
 
+<div id="listings-sidebar" class="overlay ui wide red vertical demo sidebar menu">
+  <a class="item">
+    <i class="home icon"></i>
+    Home
+  </a>
+  <a class="active item">
+    <i class="heart icon"></i>
+    Current Section
+  </a>
+  <a class="item">
+		{{> reactiveTable collection=Listings settings=settings }}
+  </a>
+  <div class="item">
+    <b>More</b>
+    <div class="menu">
+      <a class="item">About</a>
+      <a class="item">Contact Us</a>
+    </div>
+  </div>
+</div>
+
 <div id="map-canvas"></div>
 <!-- {{> ShowListings}} -->
 

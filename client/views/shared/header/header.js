@@ -21,10 +21,10 @@ Template.header.events({
 	},
 
 	'click #my-listings': function(){
-		console.log("clicked");
-		$('#show-listings-modal').modal('show');
-		// UI.render(Template.CreateListing); 
-	}
+		$('#listings-sidebar.overlay.sidebar').sidebar({overlay: true}).sidebar('toggle');
+	},
+
+
 
 
 
