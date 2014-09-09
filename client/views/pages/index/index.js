@@ -1,7 +1,3 @@
-var searchListings = function(sterilizedSearchParams){
-  return Listings.find(sterilizedSearchParams).fetch();
-};
-
 var sterilizeSearchParams = function(searchParams){
   var sterilizedSearchParams = {};
   for (var prop in searchParams) {
@@ -10,7 +6,54 @@ var sterilizeSearchParams = function(searchParams){
     }
   };
   return sterilizedSearchParams;
-}
+};
+
+var searchListings = function(sterilizedSearchParams){
+  return Listings.find(sterilizedSearchParams).fetch();
+};
+
+var initializeMapSearchParams = function(searchResults){
+
+  var listings = searchResults;
+
+  var initialize = function() {
+
+    var mapOptions = {
+      zoom: 12,
+      center: new google.maps.LatLng(34.2593804, 108.9672088)
+    };
+
+    var infoWindow = new google.maps.InfoWindow();
+
+    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+    for(var i = 0; i < listings.length; i++){
+
+      var lat = listings[i].geocode.lat;
+      var lng = listings[i].geocode.lng;
+      var listingLatlng = new google.maps.LatLng(lat, lng);
+      var marker = new google.maps.Marker({
+          position: listingLatlng,
+          animation: google.maps.Animation.DROP,
+          map: map,
+          title: listings[i].title,
+          // Storing the content of the infoWindow into the marker itself
+          content: listings[i].description
+      });
+      google.maps.event.addListener(marker, 'click', function(){
+        // "this" is the particular marker that was clicked
+        // console.log("this");
+        // console.log(this);        
+        infoWindow.setContent(this.content);
+        infoWindow.open(map, this);
+      });
+
+    };
+
+  };
+
+  initialize();
+};
 
 
 
@@ -53,6 +96,9 @@ Template.Index.events({
     var searchResults = searchListings( sterilizeSearchParams(searchParams) );
 
     console.log(searchResults);
+
+    initializeMapSearchParams(searchResults);
+
   },
 
 });
