@@ -44,7 +44,7 @@ Template.CreateListing.rendered = function(){
 	// 			console.log("clicked");
 	// });
 
-	$('form').submit(function(e, t){
+	$('form#create-listing-form').submit(function(e, t){
 		e.preventDefault();
 		var listingSubmission = {
 			address1: $(e.target).find('[name=address1]').val(),

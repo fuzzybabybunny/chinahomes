@@ -1,3 +1,18 @@
+var searchListings = function(sterilizedSearchParams){
+  return Listings.find(sterilizedSearchParams).fetch();
+};
+
+var sterilizeSearchParams = function(searchParams){
+  var sterilizedSearchParams = {};
+  for (var prop in searchParams) {
+    if (searchParams.hasOwnProperty(prop) && !!searchParams[prop]) {
+      sterilizedSearchParams[prop] = searchParams[prop];
+    }
+  };
+  return sterilizedSearchParams;
+}
+
+
 
 /*****************************************************************************/
 /* Index: Event Handlers and Helpersss .js*/
@@ -18,6 +33,26 @@ Template.Index.events({
     console.log(myListing);
     Session.set('myListing', myListing);
     $('#show-listing-modal').modal('show');
+  },
+
+  'submit form#search-listings-form': function (e) {
+    // set the blog post we'll display details and news for
+    e.preventDefault();
+    console.log("clicked!");
+    var searchParams = {
+      city: $(e.target).find('[name=city]').val(),
+      bedrooms: parseInt( $(e.target).find('[name=bedrooms]').val() ),
+      bathrooms: parseInt( $(e.target).find('[name=bathrooms]').val() ),
+      interiorSize: parseInt( $(e.target).find('[name=interiorSize]').val() ),
+      exteriorSize: parseInt( $(e.target).find('[name=exteriorSize]').val() ),
+      price: parseInt( $(e.target).find('[name=price]').val() * 100 )
+    };
+
+    console.log(searchParams);
+
+    var searchResults = searchListings( sterilizeSearchParams(searchParams) );
+
+    console.log(searchResults);
   },
 
 });

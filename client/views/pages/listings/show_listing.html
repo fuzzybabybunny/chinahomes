@@ -2,12 +2,17 @@
 
 	<div class="ui modal" id="show-listing-modal">
 	  <i class="close icon"></i>
-	  <div class="header">
-	    {{Listing.fullAddress}}
+	  <div class="grid">
+		  <div class="header sixteen wide column">
+		    {{Listing.fullAddress}}
+		  </div>
+		  <div class="eight wide column">
+		  	{{Listing.bedrooms}}
+		  </div>
+		  <div class="eight wide column">
+		    {{Listing.bathrooms}}
+		  </div>
 	  </div>
-<!-- 	  <div class="content">
-			{{> reactiveTable collection=Listings settings=settings }}
-	  </div> -->
 
 	</div>
 

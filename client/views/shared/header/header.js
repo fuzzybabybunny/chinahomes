@@ -32,6 +32,10 @@ Template.header.events({
 		$('#listings-sidebar.overlay.sidebar').sidebar({overlay: true}).sidebar('toggle');
 	},
 
+	'click #search-listings': function(){
+		$('#search-sidebar.overlay.sidebar').sidebar({overlay: true}).sidebar('toggle');
+	},
+
 
 
 
