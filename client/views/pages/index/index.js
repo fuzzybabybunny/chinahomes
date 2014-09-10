@@ -45,7 +45,7 @@ var initializeMapSearchParams = function(searchResults){
         // "this" is the particular marker that was clicked
         // console.log("this");
         // console.log(this);        
-        infoWindow.setContent(this.content);
+        infoWindow.setContent(this.title);
         infoWindow.open(map, this);
       });
 
@@ -171,7 +171,7 @@ Template.Index.rendered = function () {
         // "this" is the particular marker that was clicked
         // console.log("this");
         // console.log(this);        
-        infoWindow.setContent(this.content);
+        infoWindow.setContent(this.title);
         infoWindow.open(map, this);
       });
 

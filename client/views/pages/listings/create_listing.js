@@ -17,27 +17,16 @@ var createFullAddress = function(addressHash){
 
 Template.CreateListing.rendered = function(){
 
+	var listingSubmission = {};
+	listingSubmission.imageIds = [];
+
 	if (Meteor.isClient){
 
 		Dropzone.autoDiscover = false;
 
 		//Adds file uploading and adds the imageID of the file uploaded
 		//to the petInfo object.
-		// var dropzone = new Dropzone("form#createListingDropzone");
-		// Dropzone.options.createListingDropzone = {
-		// 	accept: function(file, done){
-		// 		console.log(file);
-		// 		console.log(done);
-		// 		ListingImages.insert(file, function(err, fileObj){
-		// 			if(err){
-  //           alert("Error");
-		// 			} else {
-		// 				var fileId = fileObj._id;
-		// 				// petInfo.imageIds.push(fileId);
-		// 			};
-		// 		});
-		// 	}
-		// };
+
 		var dropzone = new Dropzone("form#createListingDropzone", {
 			accept: function(file, done){
 				console.log(file);
@@ -47,7 +36,7 @@ Template.CreateListing.rendered = function(){
             alert("Error");
 					} else {
 						var fileId = fileObj._id;
-						// petInfo.imageIds.push(fileId);
+						listingSubmission.imageIds.push(fileId);
 					};
 				});
 
@@ -56,28 +45,20 @@ Template.CreateListing.rendered = function(){
 
 	};
 
-	// $('#add-listing-button').click(
-	// 		function(){
-	// 			console.log("clicked");
-	// });
 
 	$('form#create-listing-form').submit(function(e, t){
 		e.preventDefault();
-		var listingSubmission = {
-			address1: $(e.target).find('[name=address1]').val(),
-			address2: $(e.target).find('[name=address2]').val(),
-			city: $(e.target).find('[name=city]').val(),
-			province: $(e.target).find('[name=province]').val(),
-			bedrooms: parseInt( $(e.target).find('[name=bedrooms]').val() ),
-			bathrooms: parseInt( $(e.target).find('[name=bathrooms]').val() ),
-			interiorSize: parseInt( $(e.target).find('[name=interiorSize]').val() ),
-			exteriorSize: parseInt( $(e.target).find('[name=exteriorSize]').val() ),
-			price: parseInt( $(e.target).find('[name=price]').val() * 100 ),
-			title: $(e.target).find('[name=title]').val(),
-			description: $(e.target).find('[name=description]').val()
-		};
-
-		// console.log(listingSubmission);
+		listingSubmission.address1 = $(e.target).find('[name=address1]').val();
+		listingSubmission.address2 = $(e.target).find('[name=address2]').val();
+		listingSubmission.city = $(e.target).find('[name=city]').val();
+		listingSubmission.province = $(e.target).find('[name=province]').val();
+		listingSubmission.bedrooms = parseInt( $(e.target).find('[name=bedrooms]').val() );
+		listingSubmission.bathrooms = parseInt( $(e.target).find('[name=bathrooms]').val() );
+		listingSubmission.interiorSize = parseInt( $(e.target).find('[name=interiorSize]').val() );
+		listingSubmission.exteriorSize = parseInt( $(e.target).find('[name=exteriorSize]').val() );
+		listingSubmission.price = parseInt( $(e.target).find('[name=price]').val() * 100 );
+		listingSubmission.title = $(e.target).find('[name=title]').val();
+		listingSubmission.description = $(e.target).find('[name=description]').val();
 
 		listingSubmission.fullAddress = createFullAddress(listingSubmission);
 
