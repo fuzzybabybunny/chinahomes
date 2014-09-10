@@ -12,4 +12,6 @@ iron:router
 nooitaf:semantic-ui
 aslagle:reactive-table
 underscore
+cfs:standard-packages
+cfs:gridfs
 

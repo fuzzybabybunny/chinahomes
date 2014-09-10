@@ -1,3 +1,4 @@
+// removes invalid values like NaN, "", undefined, etc
 var sterilizeSearchParams = function(searchParams){
   var sterilizedSearchParams = {};
   for (var prop in searchParams) {
