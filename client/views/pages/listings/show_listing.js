@@ -4,6 +4,19 @@ Template.ShowListing.helpers({
     return Session.get('myListing');
   },
 
+  'ListingImages': function(){
+    var imageIdsArray = Session.get('myListing').imageIds;
+    var listingImagesArray = [];
+    var imageURL = "";
+    for (var i = 0; i < imageIdsArray.length; i++) {
+      console.log(ListingImages.findOne(imageIdsArray[i]).url());
+      imageURL = ListingImages.findOne(imageIdsArray[i]).url();
+      listingImagesArray.push(imageURL);
+    }
+    console.log(listingImagesArray);
+    return listingImagesArray;
+  }
+
 });
 
 Template.ShowListing.events({

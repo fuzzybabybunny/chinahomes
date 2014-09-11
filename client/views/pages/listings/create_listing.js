@@ -28,10 +28,16 @@ Template.CreateListing.rendered = function(){
 		//to the petInfo object.
 
 		var dropzone = new Dropzone("form#createListingDropzone", {
+			createImageThumbnails: true,
+			thumbnail: function(file, dataUrl){
+				console.log("thumbnail:");
+				console.log(file);
+				console.log(dataUrl);
+			},
 			accept: function(file, done){
 				console.log(file);
 				console.log(done);
-				ListingImages.insert(file, function(err, fileObj){
+				var imageID: ListingImages.insert(file, function(err, fileObj){
 					if(err){
             alert("Error");
 					} else {
@@ -39,6 +45,8 @@ Template.CreateListing.rendered = function(){
 						listingSubmission.imageIds.push(fileId);
 					};
 				});
+				console.log("This is the image ID:");
+				console.log(imageID);
 
 			}
 		});

@@ -12,6 +12,11 @@
 		  <div class="eight wide column">
 		    {{Listing.bathrooms}}
 		  </div>
+		  <div class="eight wide column">
+		    {{#each ListingImages}}
+		    <div class="item"> <img src="{{this}}"></div>
+		    {{/each}}
+		  </div>
 	  </div>
 
 	</div>
